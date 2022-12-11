@@ -266,7 +266,7 @@ export const todoSlice = createSlice({
       state.searchProductMsg = "";
       state.product = filtered;
     },
-    filterbyDetails(state, action) {
+    setFilterbyDetails(state, action) {
       let temporal2 = state.allProduct;
 
       let filtered2 = temporal2.filter(
@@ -452,13 +452,13 @@ const {
   setAddOrder,
   setGetAllOrders,
   setGetOrderById,
+  setFilterbyDetails,
 } = todoSlice.actions;
 
 export const {
   allBrands,
   allCategories,
   filter1,
-  filterbyDetails,
   addToCart,
   deleteP,
   updateCartQuantity,
@@ -802,6 +802,10 @@ export const getOrderById = (id, token) => {
     });
     return dispatch(setGetOrderById(ordersItem.data));
   };
+};
+
+export const filterbyDetails = (category, details) => {
+  return setFilterbyDetails([category, details]);
 };
 
 export default todoSlice.reducer;
